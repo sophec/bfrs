@@ -1,7 +1,7 @@
-# Shitty Brainfuck to C
+# Shitty Brainfuck to C Transpiler
 
 Does some simple "optimizations" (as if your compiler couldn't do them
-itself...):
+itself... perhaps "simplifications" would be more accurate):
 
 - Multiple additions/subtractions are combined into one line
 - Multiple pointer moves are combined into one line
@@ -58,10 +58,22 @@ Pointer :   ^
 >++.                    And finally a newline from Cell #6
 ```
 
-Turn this into (readable) C:
+Turn this into C:
 
 ```sh
 cargo run -- helloworld.bf >helloworld.c
+```
+
+Or make it readable:
+
+```sh
+cargo run -- helloworld.bf | clang-format >helloworld.c
+```
+
+Or compile it right away:
+
+```sh
+cargo run -- helloworld.bf | gcc -x c -o helloworld -
 ```
 
 The output (piped through clang-format):
