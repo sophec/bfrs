@@ -61,19 +61,19 @@ Pointer :   ^
 Turn this into C:
 
 ```sh
-cargo run -- helloworld.bf >helloworld.c
+bfrs helloworld.bf >helloworld.c
 ```
 
 Or make it readable:
 
 ```sh
-cargo run -- helloworld.bf | clang-format >helloworld.c
+bfrs helloworld.bf | clang-format >helloworld.c
 ```
 
 Or compile it right away:
 
 ```sh
-cargo run -- helloworld.bf | gcc -x c -o helloworld -
+bfrs helloworld.bf | gcc -x c -o helloworld -
 ```
 
 The output (piped through clang-format):
@@ -128,4 +128,11 @@ int main() {
   *++p += 2;
   putchar(*p);
 }
+```
+
+And this is the output without formatting:
+
+```c
+#include <stdio.h>
+static char a[65535]={0};static char*p=a;int main(){*p+=8;for(;*p;){*++p+=4;for(;*p;){*++p+=2;*++p+=3;*++p+=3;++*++p;--*(p-=4);}++*++p;++*++p;--*++p;++*(p+=2);for(;*p;){--p;}--*--p;}p+=2;putchar(*p);*++p-=3;putchar(*p);*p+=7;putchar(*p);putchar(*p);*p+=3;putchar(*p);p+=2;putchar(*p);--*--p;putchar(*p);--p;putchar(*p);*p+=3;putchar(*p);*p-=6;putchar(*p);*p-=8;putchar(*p);++*(p+=2);putchar(*p);*++p+=2;putchar(*p);}
 ```
