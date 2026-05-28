@@ -151,8 +151,7 @@ impl Program {
 
 impl Display for Program {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, r"#include <stdio.h>
-static char a[65535]={{0}};static char*p=a;int main(){{")?;
+        write!(f, "#include <stdio.h>\nstatic char a[65535]={{0}};static char*p=a;int main(){{")?;
 
         for op in &self.ops {
             write!(f, "{op}")?;
