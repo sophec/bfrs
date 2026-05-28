@@ -80,8 +80,8 @@ The output (piped through clang-format):
 
 ```c
 #include <stdio.h>
-static char a[65535] = {0};
-static char* p = a;
+static unsigned char a[65535] = {0};
+static unsigned char* p = a;
 int main() {
   *p += 8;
   for (; *p;) {
@@ -134,5 +134,5 @@ And this is the output without formatting:
 
 ```c
 #include <stdio.h>
-static char a[65535]={0};static char*p=a;int main(){*p+=8;for(;*p;){*++p+=4;for(;*p;){*++p+=2;*++p+=3;*++p+=3;++*++p;--*(p-=4);}++*++p;++*++p;--*++p;++*(p+=2);for(;*p;){--p;}--*--p;}p+=2;putchar(*p);*++p-=3;putchar(*p);*p+=7;putchar(*p);putchar(*p);*p+=3;putchar(*p);p+=2;putchar(*p);--*--p;putchar(*p);--p;putchar(*p);*p+=3;putchar(*p);*p-=6;putchar(*p);*p-=8;putchar(*p);++*(p+=2);putchar(*p);*++p+=2;putchar(*p);}
+static unsigned char a[65535]={0};static unsigned char*p=a;int main(){*p+=8;for(;*p;){*++p+=4;for(;*p;){*++p+=2;*++p+=3;*++p+=3;++*++p;--*(p-=4);}++*++p;++*++p;--*++p;++*(p+=2);for(;*p;){--p;}--*--p;}p+=2;putchar(*p);*++p-=3;putchar(*p);*p+=7;putchar(*p);putchar(*p);*p+=3;putchar(*p);p+=2;putchar(*p);--*--p;putchar(*p);--p;putchar(*p);*p+=3;putchar(*p);*p-=6;putchar(*p);*p-=8;putchar(*p);++*(p+=2);putchar(*p);*++p+=2;putchar(*p);}
 ```
